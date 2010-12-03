@@ -1,0 +1,9 @@
+/* 
+	css document for IE6
+*/
+* html .clearfix { 
+	zoom: 1; 
+}
+section nav#subnav ul li {
+	height: 1em;
+}

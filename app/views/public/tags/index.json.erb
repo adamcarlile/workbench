@@ -1,0 +1,4 @@
+[<%- @tags.each_with_index do |t, i| %>
+{
+	"value": "<%= t.name %>"
+}<%= "," unless i + 1 == @tags.size %><%- end %>]

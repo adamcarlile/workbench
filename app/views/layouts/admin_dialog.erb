@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <% @page_title ||= controller.controller_name.humanize %>
+  <title><%= @page_title %> - <%= SITE_NAME %> Administration</title>
+
+  <%= stylesheet_link_tag '/cms/stylesheets/redmond/jquery-ui.css', '/cms/stylesheets/jquery.treeTable.css', '/cms/stylesheets/admin.css', '/stylesheets/admin.css' %>
+  <%= javascript_include_tag '/cms/javascripts/jquery.core.js', '/cms/javascripts/jquery.ui.js', '/cms/javascripts/jquery.treeTable.min.js', '/cms/javascripts/jquery.tablednd_0_5.js', '/cms/javascripts/swfobject', '/cms/javascripts/admin', :cache => 'all_admin' %>
+
+  <script type="text/javascript">
+  <%= request_forgery_protection_token %> =  '<%= form_authenticity_token %>';
+  window.focus();
+  </script>
+
+	<%= yield :head %>
+</head>
+<body>
+  
+<div id="content">
+
+  <%= render_flash %>
+  <h1><%= @page_title %></h1>
+
+  <%= yield %>
+
+</div>
+
+
+</body>
+</html>

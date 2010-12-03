@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag '/cms/stylesheets/redmond/jquery-ui.css', '/cms/stylesheets/jquery.treeTable.css', '/cms/stylesheets/admin' %>
+
+<%= javascript_include_tag '/cms/javascripts/jquery.core.js', '/cms/javascripts/jquery.ui.js', '/cms/javascripts/jquery.treeTable.min.js', '/cms/javascripts/jquery.tablednd_0_5.js', '/cms/javascripts/swfobject', '/cms/javascripts/admin', :cache => 'all_admin' %>
+
+<%= javascript_include_tag '/cms/javascripts/ckeditor/ckeditor.js' %>
+<script type="text/javascript">
+window.onload = function()
+{
+  $('.wysiwyg').each(function(){
+    CKEDITOR.replace(this.id, 
+      {
+        filebrowserImageBrowseUrl: '<%= url_for(:controller => 'images', :action => 'index', :popup => 'true') %>',
+        filebrowserWindowWidth : '950',
+        customConfig: '<%= javascript_path('/cms/javascripts/ckeditor/custom_config.js') %>',
+        contentsCss: '<%= stylesheet_path('/cms/stylesheets/wysiwyg.css') %>',
+        height: 350
+      });    
+  })
+}
+
+<%= request_forgery_protection_token %> =  '<%= form_authenticity_token %>';
+
+tags_autocomplete_url = '<%= tags_path(:format => 'json') %>';
+
+</script>
+
+<%= render 'admin/shared/site_specific_head_extras' %>

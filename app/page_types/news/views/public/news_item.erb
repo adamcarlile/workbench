@@ -1,0 +1,18 @@
+<%- @body_class = "newsitem" %>
+<%- content_for :sidebar do -%>
+  <h2>Archive</h2>
+  <ul class="nav">
+    <% for month in NewsIndex.archive_months -%>
+    <li><%= link_to "#{Date::MONTHNAMES[month[:month]]} #{month[:year]}", url_for_page(@page, month) %></li>
+    <% end -%>
+  </ul>
+<%- end -%>
+
+<h1><%= h @page.title %></h1>
+<% if @page.intro %>
+  <div id="intro"><p><%= h @page.intro %></p></div>
+<% end %>
+<%= image_tag(@page.images.first.file.url(:large)) unless @page.images.empty? %>
+<%= @page.body %>
+<%= render 'public/comments/comments_ui' %>
+<p id="back"><%= link_to " &laquo; back to news index", url_for_page(@page.parent) %></p>

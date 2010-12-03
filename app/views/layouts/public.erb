@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title><%= @page_title %> - <%= SITE_NAME %></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= tag 'meta', :content => @meta_keywords, :name => 'keywords' unless @meta_keywords.blank? %>
+<%= tag 'meta', :content => @meta_description, :name => 'description' unless @meta_description.blank? %>
+<link rel="shortcut icon" href="/cms/favicon.ico" type="image/x-icon" />
+<!-- CSS -->
+<%= stylesheet_link_tag '/cms/stylesheets/reset.css','/cms/stylesheets/general.css' %>
+<!--[if lte IE 8]>
+<%= stylesheet_link_tag '/cms/stylesheets/ie_all.css', :media => 'screen,projection' %>
+<%= javascript_include_tag '/cms/javascripts/html5.js' %>
+<![endif]-->
+<!--[if IE 6]>
+<%= stylesheet_link_tag '/cms/stylesheets/ie6.css', :media => 'screen,projection' %>
+<![endif]-->
+<%= stylesheet_link_tag '/cms/stylesheets/print.css', :media => 'print' %>
+<%= yield :head %>
+</head>
+<body id="<%= @body_id %>" class="<%= @body_class %>">
+<div id="wrap">
+	<header>
+		<a href="/" id="logo" title="Return home"><%= SITE_NAME %></a>
+	  	<%= render 'public/shared/search_form' %>
+		<%= render_global_nav %>
+	</header>
+	<section id="main_content" class="clearfix">
+  			<%= render_breadcrumb %>
+  			<%= render_flash %>
+  			<%= yield %>
+	</section>
+	<section id="supplementary">
+  		<%= yield :sidebar %>
+	</section>
+	<footer>
+		<%= render_footer_nav %>
+	</footer>
+</div>
+</body>
+</html>

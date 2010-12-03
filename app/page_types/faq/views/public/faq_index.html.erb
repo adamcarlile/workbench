@@ -1,0 +1,18 @@
+<%= render :partial => 'public/shared/page_body' %>
+<ol id="faqs_index">
+<% @questions.each_with_index do |question, index| %>
+  <li><a href="#<%= question.slug %>"><span class="index"><%= index + 1 %></span> <%= h question.title %></a></li>
+<% end %>
+</ol>
+
+<%- if @questions.length > 0 %>
+<h2>Answers</h2>
+<% @questions.each_with_index do |question, index| %>
+<section class="answer">
+<span class="index"><%= index + 1 %></span>
+  <h3 id="<%= question.slug %>"><%= h question.title %></h3>
+	<%= question.answer %>
+	<p class="back_to_top"><a href="#faqs_index">back to top</a></p>
+</section>
+<% end %>
+<% end %>

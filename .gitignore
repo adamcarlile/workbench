@@ -1,0 +1,6 @@
+spec/debug.log
+public/upload
+upload
+db/development_structure.sql
+TODO
+vendor/plugins/acts_as_xapian/xapiandbs/

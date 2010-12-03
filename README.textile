@@ -1,0 +1,56 @@
+h2. Installation
+
+rails *MYAPP*
+
+cd *MYAPP*
+
+initialise git
+
+add gitignore file
+
+*.sql
+*.DS_Store
+log
+tmp
+public/upload
+public/cms [this is symlinked so you need to regenerate it on the server/upon new clone]
+upload
+
+
+rm public/index.html 
+
+clear *MYAPP* routes
+
+edit config/database.yml - you need a 'cucumber' env with same settings as test to run features
+
+add the following line to environment.rb (I put under the gems)
+eval(File.read("#{RAILS_ROOT}/vendor/plugins/cms-engine/config/environment.rb"))
+
+git submodule add git@github.com:bluestorm/cms-engine.git vendor/plugins/cms-engine
+
+script/generate cms_engine
+
+edit db/seed.rb
+
+rake db:migrate
+                              
+rake cms:db:bootstrap
+
+script/server start
+
+branch html5 includes all latest fixes
+
+h3. THEME STUFF
+
+copy the public template which is a completely blank html5 template with cms hooks
+
+h4. CSS
+
+*reset.css : includes all html5 resets
+*general.css : it's a boilerplate including all necessary styles + tables + pagination + clearfixes + cms notices/errors
+*if lte IE 8 : ie_all.css, has all the html5 fixes
+*if IE 6 : ie6.css, has all the necessary fixes for clearing etc
+
+h4. JAVASCRIPT
+
+*html5 shiv : THIS IS REQUIRED

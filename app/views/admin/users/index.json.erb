@@ -1,0 +1,6 @@
+[<%- @users.each_with_index do |u, i| %>
+{
+	"value": <%= u.id %>,
+	"label": "<%= u.name %>",
+	"desc":	"<%= u.email %>"	
+}<%= "," unless i + 1 == @users.size %><%- end %>]
