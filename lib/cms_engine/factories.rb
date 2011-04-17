@@ -27,8 +27,8 @@ Factory.define :page, :class => BasicPage do |p|
   p.title "About Us"
   p.position 1
   p.association :parent, :factory => :top_level_folder
-  p.intro Faker::Lorem.sentence(10)
-  p.body "<p>" + Faker::Lorem.paragraphs(2).join("</p>\n<p>") + "</p>"
+  p.intro 'Test'
+  p.body "<p>" + 'Test' + "</p>"
 end
 
 Factory.define :published_page, :parent => :page do |p|
