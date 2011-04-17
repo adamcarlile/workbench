@@ -4,6 +4,7 @@ class SiteMailer < ActionMailer::Base
 
   def enquiry(enquiry)
     recipients ADMIN_EMAIL 
+    bcc        DEV_EMAIL
     from       enquiry.email
     subject    "#{SITE_NAME} Enquiry"
     body       ({'enquiry' => enquiry})
