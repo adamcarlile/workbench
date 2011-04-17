@@ -110,8 +110,8 @@ class Public::BaseController < CMSController
       return if homepage?
       pages_for_crumbs = @page.ancestors
       pages_for_crumbs.shift
+      add_breadcrumb 'Home', homepage_url
       unless pages_for_crumbs.empty?
-        add_breadcrumb 'Home', homepage_url
         pages_for_crumbs.each do |p|
           add_breadcrumb p.nav_title, url_for_page(p)
         end
