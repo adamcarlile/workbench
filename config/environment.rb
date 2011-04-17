@@ -1,7 +1,7 @@
 config.plugin_paths += %W( #{RAILS_ROOT}/vendor/plugins/cms-engine/vendor/plugins )
 config.plugins = [ :find_by_param, :all ]
 
-config.load_paths += %W( #{RAILS_ROOT}/vendor/plugins/cms-engine/app/models/page_types )
+config.autoload_paths += %W( #{RAILS_ROOT}/vendor/plugins/cms-engine/app/models/page_types )
 
 config.gem "mislav-will_paginate", :version => ">= 2.3.0", :lib => "will_paginate", :source => "http://gems.github.com"
 config.gem "authlogic", :version => "<= 2.1.3"
