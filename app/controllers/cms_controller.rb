@@ -13,7 +13,7 @@ class CMSController < ActionController::Base
   before_filter :set_charset
 
   #Check to make sure we are in production mode
-  unless ActionController::Base.consider_all_requests_local
+  if ActionController::Base.consider_all_requests_local
     #Ensure that any extra functionality we have built in is caught by the 404, making sure the user never sees an ugly 404
     rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, ActionController::UnknownController, ActionController::UnknownAction, :with => :render_not_found
     rescue_from RuntimeError, ArgumentError, Exception, :with => :render_internal_error
@@ -25,9 +25,6 @@ class CMSController < ActionController::Base
   
   def render_internal_error(exception)
     log_error(exception)
-    begin
-      notify_hoptoad(exception)
-    end
     render :template => 'public/500', :status => :internal_server_error
   end
 
