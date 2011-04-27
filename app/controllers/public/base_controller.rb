@@ -16,8 +16,8 @@ class Public::BaseController < CMSController
     
     def render_page
       load_shared_pages
-      set_page_types_ivars
       set_meta_data
+      set_page_types_ivars
       add_page_breadcrumbs
       render_page_template
     end
