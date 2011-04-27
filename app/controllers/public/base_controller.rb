@@ -116,7 +116,12 @@ class Public::BaseController < CMSController
           add_breadcrumb p.nav_title, url_for_page(p)
         end
       end
-      add_breadcrumb @page.nav_title
+      if @extra_crumb
+        add_breadcrumb @page.nav_title, url_for_page(@page)
+        add_breadcrumb @extra_crumb[:title]
+      else
+        add_breadcrumb @page.nav_title
+      end
     end
 
     def admin_preview_mode?
