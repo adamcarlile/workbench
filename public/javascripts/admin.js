@@ -62,6 +62,8 @@ function doContentLoaded()
     return false;
   });  
 
+	$('a.ajax_dialog_link, a.dialog_link').unbind();
+
   $("#content_browser.ajax .tag_list a").ajaxGetLink($("#content_browser .results"));
 
   $("#content_browser.ajax .results form, #page_attachments form").ajaxForm();
@@ -78,7 +80,7 @@ function doContentLoaded()
   }).find('input.position').hide();
 
   $(".dialog").each(function(dialog){
-    $(this).dialog({ autoOpen: false, resizeable: true, width: 400})
+    $(this).dialog({ autoOpen: false, resizeable: true, width: 700})
   });
 
   $('a.dialog_link').click(function(){
