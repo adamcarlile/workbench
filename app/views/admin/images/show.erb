@@ -68,7 +68,7 @@ function pickImage(id)
     window.opener.imageLibraryCallback(image,window);
   } catch (e) {
 
-    window.opener.CKEDITOR.tools.callFunction(1, image.src);
+    window.opener.CKEDITOR.tools.callFunction(<%= params[:CKEditorFuncNum] %>, image.src);
 
   	window.top.opener.focus();
   	window.top.close() ;

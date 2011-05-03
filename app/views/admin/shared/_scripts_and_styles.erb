@@ -4,20 +4,31 @@
 
 <%= javascript_include_tag '/cms/javascripts/ckeditor/ckeditor.js' %>
 <script type="text/javascript">
-window.onload = function()
-{
-  $('.wysiwyg').each(function(){
-    CKEDITOR.replace(this.id, 
-      {
-        filebrowserImageBrowseUrl: '<%= url_for(:controller => 'images', :action => 'index', :popup => 'true') %>',
-        filebrowserWindowWidth : '950',
-        customConfig: '<%= javascript_path('/cms/javascripts/ckeditor/custom_config.js') %>',
-        contentsCss: '<%= stylesheet_path('/cms/stylesheets/wysiwyg.css') %>',
-        height: 350
-      });    
+function ckeditor(id){
+	if(CKEDITOR.instances[id]) {
+		CKEDITOR.instances[id].destroy()
+	}
+	CKEDITOR.replace(id, 
+    {
+      filebrowserImageBrowseUrl: '<%= url_for(:controller => 'images', :action => 'index', :popup => 'true') %>',
+      filebrowserWindowWidth : '900',
+      customConfig: '<%= javascript_path('/cms/javascripts/ckeditor/custom_config.js') %>',
+      contentsCss: '<%= stylesheet_path('/cms/stylesheets/wysiwyg.css') %>',
+      height: 350
+    });
+}
+
+function addCkEditor(){
+	$('.wysiwyg').each(function(){
+  	ckeditor(this.id)
   })
 }
 
+$(document).ready(function(){
+	addCkEditor();
+})
+</script>
+<script type="text/javascript">
 <%= request_forgery_protection_token %> =  '<%= form_authenticity_token %>';
 
 tags_autocomplete_url = '<%= tags_path(:format => 'json') %>';

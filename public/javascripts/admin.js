@@ -88,10 +88,15 @@ function doContentLoaded()
     return false;
   })
 
-  $('a.ajax_dialog_link').click(function(){
-    $('#'+this.target).html(' ').load(this.href).dialog('open');
-    return false;
-  })
+  $('a.ajax_dialog_link').click(function(e){
+    target = $('#'+this.target).html(' ').load(this.href, function(){
+			target.find('textarea.wysiwyg').each(function(){
+				ckeditor(this.id)
+			})
+		})
+		target.dialog('open');
+		return false;
+	})
 
 	$(function(){
 		if($('.user_autocomplete').length != 0 ){
