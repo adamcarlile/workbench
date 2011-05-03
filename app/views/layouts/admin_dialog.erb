@@ -5,7 +5,7 @@
   <% @page_title ||= controller.controller_name.humanize %>
   <title><%= @page_title %> - <%= SITE_NAME %> Administration</title>
 
-  <%= stylesheet_link_tag '/cms/stylesheets/redmond/jquery-ui.css', '/cms/stylesheets/jquery.treeTable.css', '/cms/stylesheets/admin.css', '/stylesheets/admin.css' %>
+  <%= stylesheet_link_tag '/cms/stylesheets/redmond/jquery-ui.css', '/cms/stylesheets/jquery.treeTable.css', '/cms/stylesheets/admin.css' %>
   <%= javascript_include_tag '/cms/javascripts/jquery.core.js', '/cms/javascripts/jquery.ui.js', '/cms/javascripts/jquery.treeTable.min.js', '/cms/javascripts/jquery.tablednd_0_5.js', '/cms/javascripts/swfobject', '/cms/javascripts/admin', :cache => 'all_admin' %>
 
   <script type="text/javascript">
