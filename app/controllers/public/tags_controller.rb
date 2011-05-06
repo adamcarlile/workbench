@@ -16,7 +16,7 @@ class Public::TagsController < Public::BaseController
   end
   
   def show
-    @tag = Tag.find(params[:id])
+    @tag = Tag.find_by_permalink(params[:id])
     render_not_found and return unless @tag
     add_breadcrumb 'Home', homepage_url
     add_breadcrumb 'Tags', tags_path
