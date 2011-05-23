@@ -16,6 +16,7 @@
 		<% if @page.can_have_user_permissions? and current_user.admin? %>
 		<li><a href="<%= admin_page_user_page_permissions_path(@page) %>" title="Permissions">User permissions</a></li>
 		<% end %>
+		<%= render @page.extra_admin_object_tabs_path if @page.extra_admin_object_tabs_path %>
 	</ul>
 
 	<div id="edit">

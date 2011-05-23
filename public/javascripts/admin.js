@@ -20,7 +20,29 @@ $.fn.visible = function(){
   return this.is(':visible');
 }
 
+function setupDatePicker() {
+	var currentTime = new Date()
+	$('.datepicker').datepicker({
+	})
+	$('.datepicker_time').datetimepicker({
+		timeFormat: 'hh:mm:ss',
+		stepMinute: 15,
+		hourGrid: 4,
+		minuteGrid: 15,
+	});
+	
+}
+
 $(document).ready(function(){
+	
+	//Set up datepicker defaults
+	$.datepicker.setDefaults({
+		showButtonPanel: true,
+		showAnim: 'blind',
+		dateFormat: 'yy-mm-dd'
+	})
+	
+	setupDatePicker()
   
   $(".ui-tabs").tabs({
     load: function(event, ui) { doContentLoaded() },
@@ -55,6 +77,11 @@ $(document).ready(function(){
 
 function doContentLoaded()
 {
+	
+	$('input#page_publish_from').datepicker();
+	$('input#page_publish_to').datepicker();
+	
+	setupDatePicker()
 
   $("#content_browser.ajax > form").submit(function(){
     data = $(this).serialize();
