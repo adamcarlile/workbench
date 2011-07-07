@@ -1,7 +1,7 @@
 class Public::BaseController < CMSController
 
   layout :set_layout
-  helper :cms_engine,:navigation,:easy_forms
+  helper :cms_engine, :navigation, :easy_forms
 
   protected
   
@@ -118,7 +118,7 @@ class Public::BaseController < CMSController
       end
       if @extra_crumb
         add_breadcrumb @page.nav_title, url_for_page(@page)
-        add_breadcrumb @extra_crumb[:title]
+        add_breadcrumb @extra_crumb
       else
         add_breadcrumb @page.nav_title
       end

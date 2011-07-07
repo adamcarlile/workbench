@@ -1,5 +1,5 @@
 class UserSessionsController < Public::BaseController
-
+  layout 'standalone'
   skip_before_filter :require_user
   
   def new
